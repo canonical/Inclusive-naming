@@ -1,0 +1,56 @@
+name: 'Run woke with reviewdog'
+description: '🐶 Run woke on pull requests to detect non-inclusive language in your source code.'
+author:
+inputs:
+  github-token:
+    description: 'GITHUB_TOKEN'
+    default: '${{ github.token }}'
+  workdir:
+    description: 'Working directory relative to the root directory.'
+    default: '.'
+  level:
+    description: 'Report level for reviewdog [info,warning,error]'
+    default: 'error'
+  reporter:
+    description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
+    default: 'github-pr-check'
+  filter-mode:
+    description: |
+      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+      Default is added.
+    default: 'added'
+  fail-on-error:
+    description: |
+      Exit code for reviewdog when errors are found [true,false]
+      Default is `false`.
+    default: 'false'
+  reviewdog-flags:
+    description: 'Additional reviewdog flags'
+    default: ''
+  woke-args:
+    description: 'woke arguments'
+    default: '. -c /home/runner/work/_actions/petesfrench/inclusive-naming-action/master/config.yml'
+    required: false
+  woke-version:
+    description: 'woke version, defaults to the latest `v0` version. Override to pin to a specific version'
+    default: 'v0'
+    required: false
+runs:
+  using: 'composite'
+  steps:
+    - run: $GITHUB_ACTION_PATH/entrypoint.sh
+      shell: bash
+      env:
+        INPUT_WOKE_VERSION: ${{ inputs.woke-version }}
+        INPUT_WOKE_ARGS: ${{ inputs.woke-args }}
+        INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
+        INPUT_FAIL_ON_ERROR: ${{ inputs.fail-on-error }}
+        INPUT_WORKDIR: ${{ inputs.workdir }}
+        INPUT_REPORTER: ${{ inputs.reporter }}
+        INPUT_FILTER_MODE: ${{ inputs.filter-mode }}
+        INPUT_LEVEL: ${{ inputs.level }}
+        INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog-flags }}
+
+branding:
+  icon: 'check-circle'
+  color: 'gray-dark'
