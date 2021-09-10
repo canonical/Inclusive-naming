@@ -104,15 +104,6 @@ rules:
       - folks
     severity: warning
 
-  - name: he/his
-    terms:
-      - he
-      - his
-    alternatives:
-      - they
-      - their
-    severity: warning
-
   - name: man hours
     terms:
       - man hours
@@ -147,6 +138,5 @@ rules:
     severity: warning
 
     options:
-      word_boundary_end: false
-      word_boundary_start: false
+      word_boundary: true
 

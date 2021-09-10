@@ -18,7 +18,7 @@ inputs:
     description: |
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
       Default is added.
-    default: 'no-filter'
+    default: 'added'
   fail-on-error:
     description: |
       Exit code for reviewdog when errors are found [true,false]
@@ -29,7 +29,7 @@ inputs:
     default: ''
   woke-args:
     description: 'woke arguments'
-    default: '. -c /home/runner/work/_actions/petesfrench/inclusive-naming-action/master/config.yml'
+    default: '. -c /home/runner/work/_actions/canonical-web-and-design/Inclusive-naming/main/config.yml'
     required: false
   woke-version:
     description: 'woke version, defaults to the latest `v0` version. Override to pin to a specific version'
