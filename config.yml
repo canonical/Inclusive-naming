@@ -2,7 +2,6 @@ ignore_files:
   - README.md
   - .github
 
-
 rules:
   # Overtly racist terms
   - name: whitelist
@@ -39,14 +38,6 @@ rules:
       - unsupported characters
     severity: warning
 
-  - name: hang
-    terms:
-      - hang
-    alternatives:
-      - stop responding
-      - stall
-    severity: warning
-
   - name: master
     terms:
       - master
@@ -54,6 +45,8 @@ rules:
       - primary
       - main
     severity: warning
+    options:
+      word_boundary: true
 
   - name: slave
     terms:
@@ -62,14 +55,18 @@ rules:
       - secondary
       - replica
     severity: warning
+    options:
+      word_boundary: true
 
   - name: native feature
     terms:
-      - native feature
+      - native
     alternatives:
       - core feature
       - built-in feature
     severity: warning
+    options:
+      word_boundary: true
 
   - name: whitehat
     terms:
@@ -79,7 +76,8 @@ rules:
       - researcher
       - security specialist
     severity: warning
-  # Overtly Sexist/Transphobic/Homophobic/Default Male Gendered Terms/Pejorative about Gender Identity
+
+  # Overtly Sexist/Transphobic/Homophobic/Default Male Gendered Terms/Pejorative about Gender Identity/Discriminative
   - name: chairman
     terms:
       - chairman
@@ -87,6 +85,14 @@ rules:
     alternatives:
       - chair
       - foreperson
+    severity: warning
+
+  - name: dummy
+    terms:
+      - dummy
+    alternatives:
+      - placeholder
+      - sample
     severity: warning
 
   - name: grandfathered
@@ -103,6 +109,16 @@ rules:
       - people
       - folks
     severity: warning
+
+  - name: hang
+    terms:
+      - hang
+    alternatives:
+      - stop responding
+      - stall
+    severity: warning
+    options:
+      word_boundary: true
 
   - name: man hours
     terms:
@@ -137,6 +153,11 @@ rules:
       - intermediary
     severity: warning
 
-    options:
-      word_boundary: true
+  - name: sanity check
+    terms:
+      - sanity
+    alternatives:
+      - confidence check
+      - coherence check
+    severity: warning
 
