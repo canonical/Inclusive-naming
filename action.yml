@@ -1,6 +1,6 @@
 name: 'Run woke with reviewdog'
 description: '🐶 Run woke on pull requests to detect non-inclusive language in your source code.'
-author:
+author: 'Peter French'
 inputs:
   github-token:
     description: 'GITHUB_TOKEN'
@@ -29,7 +29,7 @@ inputs:
     default: ''
   woke-args:
     description: 'woke arguments'
-    default: '. -c /home/runner/work/_actions/canonical-web-and-design/Inclusive-naming/main/config.yml'
+    default: '. -c /home/runner/work/_actions/canonical-web-and-design/inclusive-naming/main/config.yml'
     required: false
   woke-version:
     description: 'woke version, defaults to the latest `v0` version. Override to pin to a specific version'

@@ -8,6 +8,10 @@ rules:
     terms:
       - whitelist
       - white-list
+      - whitelisted
+      - white-listed
+      - whitelisting
+      - white-listing
     alternatives:
       - allowlist
     severity: error
@@ -16,6 +20,10 @@ rules:
     terms:
       - blacklist
       - black-list
+      - blacklisted
+      - black-listed
+      - blacklisting
+      - black-listing
     alternatives:
       - denylist
       - blocklist
@@ -76,7 +84,6 @@ rules:
       - researcher
       - security specialist
     severity: warning
-
   # Overtly Sexist/Transphobic/Homophobic/Default Male Gendered Terms/Pejorative about Gender Identity/Discriminative
   - name: chairman
     terms:
@@ -160,4 +167,5 @@ rules:
       - confidence check
       - coherence check
     severity: warning
-
+  # Ignore rules
+  - name: he
