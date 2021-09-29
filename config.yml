@@ -66,16 +66,6 @@ rules:
     options:
       word_boundary: true
 
-  - name: native feature
-    terms:
-      - native
-    alternatives:
-      - core feature
-      - built-in feature
-    severity: warning
-    options:
-      word_boundary: true
-
   - name: whitehat
     terms:
       - whitehat
