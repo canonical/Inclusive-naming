@@ -14,7 +14,7 @@ rules:
       - white-listing
     alternatives:
       - allowlist
-    severity: error
+    severity: warning
 
   - name: blacklist
     terms:
