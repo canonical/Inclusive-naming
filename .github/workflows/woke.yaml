@@ -1,3 +1,4 @@
+name: Woke Check
 on:
   workflow_call:
     inputs:
