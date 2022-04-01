@@ -13,7 +13,7 @@ on: pull_request
 
 jobs:
   call-inclusive-naming-check:
-    name: Inclusive naming check
+    name: Inclusive naming
     uses: canonical-web-and-design/Inclusive-naming/.github/workflows/woke.yaml@main
     with:
       fail-on-error: "true"
