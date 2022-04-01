@@ -69,4 +69,4 @@ jobs:
           fail-on-error: ${{ inputs.fail-on-error }}
           reviewdog-flags: ${{ inputs.reviewdog-flags }}
           woke-args: ${{ inputs.woke-args }}
-          woke-version: $${ inputs.woke-version }}         
+          woke-version: ${ inputs.woke-version }}         
