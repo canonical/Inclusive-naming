@@ -62,11 +62,11 @@ jobs:
         uses: canonical-web-and-design/inclusive-naming@main
         with:
           github-token: ${{ secrets.github-token }}
-          workdir: ${{ input.workdir }}
-          level: ${{ input.level }}
-          reporter: ${{ input.reporter }}
-          filter-mode: ${{ input.filter-mode }}
-          fail-on-error: ${{ input.fail-on-error }}
-          reviewdog-flags: ${{ input.reviewdog-flags }}
-          woke-args: ${{ input.woke-args }}
-          woke-version: $${ input.woke-version }}         
+          workdir: ${{ inputs.workdir }}
+          level: ${{ inputs.level }}
+          reporter: ${{ inputs.reporter }}
+          filter-mode: ${{ inputs.filter-mode }}
+          fail-on-error: ${{ inputs.fail-on-error }}
+          reviewdog-flags: ${{ inputs.reviewdog-flags }}
+          woke-args: ${{ inputs.woke-args }}
+          woke-version: $${ inputs.woke-version }}         
