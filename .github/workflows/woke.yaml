@@ -1,0 +1,78 @@
+on:
+  workflow_call:
+    inputs:
+      workdir:
+        description: 'Working directory relative to the root directory.'
+        type: string
+        required: false
+        default: '.'
+      level:
+        description: 'Report level for reviewdog [info,warning,error]'
+        type: string
+        required: false
+        default: 'error'
+      reporter:
+        description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
+        type: string
+        required: false
+        default: 'github-pr-check'
+      filter-mode:
+        description: |
+          Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+          Default is added.
+        required: false
+        type: choice
+        default: 'added'
+        options:
+        - added
+        - diff_context
+        - file
+        - nofilter
+      fail-on-error:
+        description: |
+          Exit code for reviewdog when errors are found [true,false]
+          Default is `false`.
+        type: string
+        required: false
+        default: 'false'
+      reviewdog-flags:
+        description: 'Additional reviewdog flags'
+        type: string
+        required: false
+        default: ''
+      woke-args:
+        description: 'woke arguments'
+        type: string
+        required: false
+        default: '. -c /home/runner/work/_actions/canonical-web-and-design/inclusive-naming/main/config.yml'
+        required: false
+      woke-version:
+        description: 'woke version, defaults to the latest `v0` version. Override to pin to a specific version'
+        type: string
+        required: false
+        default: 'v0'
+    secrets:
+      github-token:
+        description: 'GITHUB_TOKEN'
+        type: string
+        required: false
+        default: '${{ secrets.GITHUB_TOKEN }}'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: woke
+        uses: canonical-web-and-design/inclusive-naming@main
+        with:
+          github-token: ${{ secrets.github-token }}
+          workdir: ${{ input.workdir }}
+          level: ${{ input.level }}
+          reporter: ${{ input.reporter }}
+          filter-mode: ${{ input.filter-mode }}
+          fail-on-error: ${{ input.fail-on-error }}
+          reviewdog-flags: ${{ input.reviewdog-flags }}
+          woke-args: ${{ input.woke-args }}
+          woke-version: $${ input.woke-version }}         
