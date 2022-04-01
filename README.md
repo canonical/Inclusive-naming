@@ -12,19 +12,11 @@ name: Inclusive naming PR check
 on: pull_request
 
 jobs:
-  inclusive-naming-check:
-    name: Inclusive-naming-check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: woke
-        uses: petesfrench/inclusive-naming-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
-          fail-on-error: true
+  call-inclusive-naming-check:
+    name: Inclusive naming check
+    uses: canonical-web-and-design/Inclusive-naming/.github/workflows/woke.yaml@main
+    with:
+      fail-on-error: "true"
 
 ```
 ## Configuration
