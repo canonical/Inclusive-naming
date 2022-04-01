@@ -61,7 +61,7 @@ jobs:
       - name: woke
         uses: canonical-web-and-design/inclusive-naming@main
         with:
-          github-token: ${{ secrets.github-token }}
+          github-token: ${{ secrets.github-token || github.token }}
           workdir: ${{ inputs.workdir }}
           level: ${{ inputs.level }}
           reporter: ${{ inputs.reporter }}
