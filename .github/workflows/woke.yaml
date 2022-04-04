@@ -1,0 +1,72 @@
+name: Woke Check
+
+on:
+  workflow_call:
+    inputs:
+      workdir:
+        description: 'Working directory relative to the root directory.'
+        required: false
+        type: string
+        default: '.'
+      level:
+        description: 'Report level for reviewdog [info,warning,error]'
+        required: false
+        type: string
+        default: 'error'
+      reporter:
+        description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
+        required: false
+        type: string
+        default: 'github-pr-check'
+      filter-mode:
+        description: |
+          Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+          Default is added.
+        required: false
+        type: string
+        default: 'added'
+      fail-on-error:
+        description: |
+          Exit code for reviewdog when errors are found [true,false]
+          Default is `false`.
+        required: false
+        type: string
+        default: 'false'
+      reviewdog-flags:
+        description: 'Additional reviewdog flags'
+        required: false
+        type: string
+        default: ''
+      woke-args:
+        description: 'woke arguments'
+        required: false
+        type: string
+        default: '. -c /home/runner/work/_actions/canonical-web-and-design/inclusive-naming/main/config.yml'
+      woke-version:
+        description: 'woke version, defaults to the latest `v0` version. Override to pin to a specific version'
+        type: string
+        required: false
+        default: 'v0'
+    secrets:
+      github-token:
+        description: 'GITHUB_TOKEN'
+        required: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: woke
+        uses: canonical-web-and-design/inclusive-naming@main
+        with:
+          github-token: ${{ secrets.github-token || github.token }}
+          workdir: ${{ inputs.workdir }}
+          level: ${{ inputs.level }}
+          reporter: ${{ inputs.reporter }}
+          filter-mode: ${{ inputs.filter-mode }}
+          fail-on-error: ${{ inputs.fail-on-error }}
+          reviewdog-flags: ${{ inputs.reviewdog-flags }}
+          woke-args: ${{ inputs.woke-args }}
+          woke-version: ${{ inputs.woke-version }}         
