@@ -1,6 +1,8 @@
 ignore_files:
   - README.md
   - .github
+  - .woke.yaml
+  - .woke.yml
 
 rules:
   # Overtly racist terms
