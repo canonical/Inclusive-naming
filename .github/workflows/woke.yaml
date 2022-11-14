@@ -43,10 +43,10 @@ on:
         type: string
         default: '. -c /home/runner/work/_actions/canonical-web-and-design/inclusive-naming/main/config.yml'
       woke-version:
-        description: 'woke version, defaults to the latest `v0` version. Override to pin to a specific version'
+        description: 'woke version, defaults to the latest `v0.19.0` version. Override to pin to a specific version'
         type: string
         required: false
-        default: 'v0'
+        default: 'v0.19.0'
     secrets:
       github-token:
         description: 'GITHUB_TOKEN'
