@@ -3,6 +3,11 @@ name: Woke Check
 on:
   workflow_call:
     inputs:
+      runs-on:
+        description: 'Which ubuntu series should be used for the runner'
+        default: "ubuntu-22.04"
+        required: false
+        type: string
       workdir:
         description: 'Working directory relative to the root directory.'
         required: false
@@ -54,7 +59,7 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-22.04
+    runs-on: ${{ inputs.runs-on }}
     steps:
       - name: Check out code
         uses: actions/checkout@v3
