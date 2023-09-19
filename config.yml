@@ -3,6 +3,7 @@ ignore_files:
   - .github
   - .woke.yaml
   - .woke.yml
+  - .wokeignore
 
 rules:
   # Overtly racist terms
