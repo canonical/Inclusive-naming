@@ -46,7 +46,7 @@ on:
         description: 'woke arguments'
         required: false
         type: string
-        default: '. -c /home/runner/work/_actions/canonical-web-and-design/inclusive-naming/main/config.yml'
+        default: '. -c /home/runner/work/_actions/canonical/inclusive-naming/main/config.yml'
       woke-version:
         description: 'woke version, defaults to the latest `v0.19.0` version. Override to pin to a specific version'
         type: string
@@ -64,7 +64,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
       - name: woke
-        uses: canonical-web-and-design/inclusive-naming@main
+        uses: canonical/inclusive-naming@main
         with:
           github-token: ${{ secrets.github-token || github.token }}
           workdir: ${{ inputs.workdir }}
