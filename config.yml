@@ -160,5 +160,36 @@ rules:
       - confidence check
       - coherence check
     severity: warning
+
+  - name: abort
+    terms:
+      - abort
+    alternatives:
+      - force quit
+      - halt
+      - close
+
+  - name: cripple
+    terms:
+      - cripple
+    alternatives:
+      - degraded
+      - restrict
+
+  - name: segregate
+    terms:
+      - segregate
+      - segregation
+    alternatives:
+      - segment/segmentation
+      - separate/separation
+
+  - name: tribe
+    terms:
+      - tribe
+    alternatives:
+      - squad
+      - team
+
   # Ignore rules
   - name: he
