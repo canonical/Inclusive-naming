@@ -57,7 +57,7 @@ rules:
       - main
     severity: warning
     options:
-      word_boundary: true
+      word_boundary: True
 
   - name: slave
     terms:
