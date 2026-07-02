@@ -29,7 +29,7 @@ inputs:
     default: ''
   woke-args:
     description: 'woke arguments'
-    default: '. -c ${{ github.action_path }}/config.yml'
+    default: '. -c config.yml'
     required: false
   woke-version:
     description: 'woke version, defaults to the latest `v0` version. Override to pin to a specific version'
