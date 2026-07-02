@@ -23,6 +23,11 @@ if [ "${INPUT_FAIL_ON_ERROR:-false}" = "true" ]; then
   FAIL_LEVEL_FLAG="-fail-level=error"
 fi
 
+# Fallback to the action's internal config if no config flag is provided
+if [[ ! "$INPUT_WOKE_ARGS" =~ "-c" ]] && [[ ! "$INPUT_WOKE_ARGS" =~ "--config" ]]; then
+  INPUT_WOKE_ARGS="$INPUT_WOKE_ARGS -c $GITHUB_ACTION_PATH/config.yml"
+fi
+
 echo '::group::'
 woke --output simple ${INPUT_WOKE_ARGS} \
   | reviewdog -efm="%f:%l:%c: %m" \
