@@ -18,13 +18,18 @@ echo '::group:: Installing woke ... https://github.com/get-woke/woke'
 curl -sfL https://raw.githubusercontent.com/get-woke/woke/main/install.sh | sh -s -- -b "${TEMP_PATH}" "${INPUT_WOKE_VERSION}" 2>&1
 echo '::endgroup::'
 
+FAIL_LEVEL_FLAG=""
+if [ "${INPUT_FAIL_ON_ERROR:-false}" = "true" ]; then
+  FAIL_LEVEL_FLAG="-fail-level=error"
+fi
+
 echo '::group::'
 woke --output simple ${INPUT_WOKE_ARGS} \
   | reviewdog -efm="%f:%l:%c: %m" \
       -name="Inclusive naming check" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE:-added}" \
-      -fail-on-error="${INPUT_FAIL_ON_ERROR:-false}" \
+      ${FAIL_LEVEL_FLAG} \
       -level="${INPUT_LEVEL}" \
       ${INPUT_REVIEWDOG_FLAGS}
 echo '::endgroup::'
